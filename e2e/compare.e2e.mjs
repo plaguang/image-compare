@@ -17,12 +17,13 @@ async function run() {
     headless: true,
   });
   const context = await browser.newContext({ acceptDownloads: true });
+  await context.route(/googletagmanager|google-analytics|clarity\.ms|_vercel\/insights/i, (route) => route.abort());
   const page = await context.newPage();
 
   const pageErrors = [];
   page.on("pageerror", (err) => pageErrors.push(err.message));
 
-  await page.goto(BASE, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await page.goto(BASE, { waitUntil: "load", timeout: 30000 });
 
   const title = await page.title();
   assert(title.includes("Side by Side Image Comparison"), `页面标题正确 (${title})`);
@@ -31,12 +32,9 @@ async function run() {
   const navCount = await page.locator("header nav a").count();
   assert(navCount === 4, `顶部吸顶导航包含全部 4 个工具入口 (实际 ${navCount})`);
 
-  // 2. 验证 GA4 与 Clarity 统计脚本已激活
-  const html = await page.content();
-  assert(
-    html.includes("G-8764ZP2KQ1") && html.includes("yxcpqk8xbw"),
-    "GA4 与 Microsoft Clarity 统计脚本已激活"
-  );
+  // 2. 验证自动化测试环境已屏蔽统计污染
+  const isBlocked = await page.evaluate(() => navigator.webdriver === true && typeof window.gtag === "undefined");
+  assert(isBlocked, "自动化测试环境已成功屏蔽 GA4 / Clarity / Vercel 统计污染");
 
   // 3. 点击加载内置对比样本对
   await page.getByRole("button", { name: /Load Demo Comparison Pair/i }).click();
