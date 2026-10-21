@@ -46,7 +46,8 @@ export type ToolEventName =
   | "compare_image_uploaded"
   | "compare_mode_switched"
   | "compare_export_png"
-  | "artifact_hue_shifted";
+  | "artifact_hue_shifted"
+  | "user_feedback";
 
 export function trackToolEvent(
   event: ToolEventName,

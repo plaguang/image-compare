@@ -399,34 +399,34 @@ export default function ImageComparator({
 
       {/* 双图上传栏 + 一键加载演示对 */}
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-5 text-center transition hover:border-emerald-600">
+        <label className="relative flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-5 text-center transition hover:border-emerald-600 active:scale-[0.99]">
           <input
             type="file"
             accept="image/*"
             aria-label="Upload Image A"
-            className="hidden"
+            className="sr-only"
             onChange={(e) => e.target.files?.[0] && handleFileUpload("A", e.target.files[0])}
           />
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Image A (Before / Left)</span>
-          <span className="text-sm font-semibold text-slate-800">
-            {imgA ? `${imgA.name} (${imgA.width}×${imgA.height})` : "Drop or Select Image A"}
+          <span className="pointer-events-none text-xs font-bold uppercase tracking-wider text-emerald-700">Image A (Before / Left)</span>
+          <span className="pointer-events-none text-sm font-semibold text-slate-800">
+            {imgA ? `${imgA.name} (${imgA.width}×${imgA.height})` : "Tap or Drop Image A Here"}
           </span>
-          <span className="text-xs text-slate-500">PNG, JPG, WebP, AVIF · 100% Local</span>
+          <span className="pointer-events-none text-xs text-slate-500">PNG, JPG, WebP, AVIF · 100% Local</span>
         </label>
 
-        <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-5 text-center transition hover:border-emerald-600">
+        <label className="relative flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-5 text-center transition hover:border-emerald-600 active:scale-[0.99]">
           <input
             type="file"
             accept="image/*"
             aria-label="Upload Image B"
-            className="hidden"
+            className="sr-only"
             onChange={(e) => e.target.files?.[0] && handleFileUpload("B", e.target.files[0])}
           />
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">Image B (After / Right)</span>
-          <span className="text-sm font-semibold text-slate-800">
-            {imgB ? `${imgB.name} (${imgB.width}×${imgB.height})` : "Drop or Select Image B"}
+          <span className="pointer-events-none text-xs font-bold uppercase tracking-wider text-indigo-700">Image B (After / Right)</span>
+          <span className="pointer-events-none text-sm font-semibold text-slate-800">
+            {imgB ? `${imgB.name} (${imgB.width}×${imgB.height})` : "Tap or Drop Image B Here"}
           </span>
-          <span className="text-xs text-slate-500">
+          <span className="pointer-events-none text-xs text-slate-500">
             {primaryHint || "Compare upscalers, compression, retouching or AI artifacts"}
           </span>
         </label>

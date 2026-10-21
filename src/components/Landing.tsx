@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ImageComparator, { type CompareMode } from "./ImageComparator";
+import FeedbackBar from "./FeedbackBar";
 
 export interface LandingConfig {
   h1: string;
@@ -107,11 +108,12 @@ export default function Landing({ config }: { config: LandingConfig }) {
         </section>
 
         {/* Interactive Image Comparison Tool */}
-        <section aria-label="Interactive Image Comparison Tool">
+        <section aria-label="Interactive Image Comparison Tool" className="space-y-4">
           <ImageComparator
             defaultMode={config.defaultMode}
             primaryHint={config.primaryHint}
           />
+          <FeedbackBar toolName="Image Comparison Tool" theme="light" />
         </section>
 
         {/* How It Works */}
