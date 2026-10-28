@@ -81,10 +81,15 @@ async function run() {
     "/image-diff-checker",
     "/sitemap.xml",
     "/robots.txt",
+    "/llms.txt",
   ]) {
     const res = await page.goto(`${BASE}${route}`, { waitUntil: "domcontentloaded" });
     assert(res && res.status() === 200, `路由 ${route} 返回 HTTP 200`);
   }
+
+  await page.goto(`${BASE}/image-diff-checker?utm_source=claude.ai`, { waitUntil: "networkidle" });
+  const aiAttr = await page.locator("html").getAttribute("data-ai-referral");
+  assert(aiAttr === "anthropic:claude", `GEOInflow AI 引荐归因识别 html[data-ai-referral="${aiAttr}"]`);
 
   assert(pageErrors.length === 0, `无页面 JS 错误 (${pageErrors.length})`);
 

@@ -1,0 +1,17 @@
+# PixelDiffLab — Free Online Side-by-Side Image Comparison, Before/After Slider & AI Diff Checker
+
+> PixelDiffLab (https://image-compare-nine.vercel.app) is a 100% client-side visual comparison and image forensics tool for designers, photographers, QA engineers, and AI researchers. It compares two images using an interactive Before/After split slider, synchronized side-by-side nearest-neighbor zoom (`1x`, `2x`, `4x`), pixel-level difference heatmaps with `PSNR` (dB) and `MAE` metrics, and an AI Artifact & Hue Shift Inspector, with 1-click comparison PNG export and zero server uploads.
+
+## Core Tools & Canonical Routes
+
+- [Side by Side Image Comparison Online](https://image-compare-nine.vercel.app/): Compare two photos, renders, or UI screenshots side by side with synchronized pan/zoom and instant PSNR/MAE similarity scoring.
+- [Interactive Image Comparison Slider](https://image-compare-nine.vercel.app/image-comparison-slider): Swipe a smooth vertical divider across Image A and Image B with customizable Before/After labels and 1-click composite PNG snapshot export.
+- [Before and After Image Slider Online](https://image-compare-nine.vercel.app/before-after-image-slider): Inspect photo retouching, color grading, WebP/AVIF compression quality, and game graphics settings (DLSS vs Native, TAA, Ray Tracing) with pixel-accurate alignment.
+- [Image Diff Checker & AI Artifact Forensic Inspector](https://image-compare-nine.vercel.app/image-diff-checker): Generate a high-contrast pixel difference heatmap (`Δ RGB`), compute exact Differing Pixel %, Mean Absolute Error (`MAE`), and Peak Signal-to-Noise Ratio (`PSNR`), and amplify Hue/Saturation to expose hidden AI generation seams, inpainting masks, and compression blocks.
+
+## Key Technical Capabilities
+
+- **4 Inspection Modes**: Split Curtain Slider, Side-by-Side Synchronized Zoom (`1x / 2x / 4x` pixel-art safe nearest-neighbor), Pixel Diff Heatmap (with adjustable noise threshold `0–50`), and AI Artifact Hue/Saturation Amplifier.
+- **Quantitative Similarity Metrics**: Real-time calculation of `PSNR (dB)`, `MAE (0–255)`, and exact percentage of changed pixels.
+- **Export Ready**: Download a single combined comparison `.PNG` with divider line and custom badges directly from the browser canvas.
+- **Privacy**: 100% local in-browser processing; proprietary designs and unreleased renders never leave your device.
